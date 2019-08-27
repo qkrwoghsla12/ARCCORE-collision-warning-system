@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-3-0.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>CollisionDetectionApplicationLayer</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>ApplicationPackage</SHORT-NAME>
+          <ELEMENTS>
+            <APPLICATION-SW-COMPONENT-TYPE UUID="6dc3d948-f823-342b-a35d-12d7ad85c16e">
+              <SHORT-NAME>UltraSonicSWC</SHORT-NAME>
+              <PORTS>
+                <R-PORT-PROTOTYPE UUID="fb697cf0-412c-351b-a8b7-180ecf04f337">
+                  <SHORT-NAME>SonarTrig</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/ArcCore/Services/IoHwAb/DigitalServiceWrite</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="67070319-b872-30d7-9914-a05b4e4bed3d">
+                  <SHORT-NAME>SonarEcho</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/ArcCore/Services/IoHwAb/DigitalServiceRead</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="7aed4aa4-b51d-3760-b590-3f5a9c8f00a7">
+                  <SHORT-NAME>SonarSend</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/CollisionDetectionApplicationLayer/Interface/SonarDataInterface</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+              </PORTS>
+              <INTERNAL-BEHAVIORS>
+                <SWC-INTERNAL-BEHAVIOR UUID="7f6831ad-bfef-3c9c-813e-4db8c4e86920">
+                  <SHORT-NAME>UltraSonicSWCBehaviour</SHORT-NAME>
+                  <DATA-TYPE-MAPPING-REFS>
+                    <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/CollisionDetectionApplicationLayer/Interface/TypeMappings</DATA-TYPE-MAPPING-REF>
+                  </DATA-TYPE-MAPPING-REFS>
+                  <EVENTS>
+                    <TIMING-EVENT UUID="a28e22f6-ec20-47af-adee-4b69fce6f84f">
+                      <SHORT-NAME>UltraSonic_timingEvent_0_1</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC/UltraSonicSWCBehaviour/UltraSonic</START-ON-EVENT-REF>
+                      <PERIOD>0.1</PERIOD>
+                    </TIMING-EVENT>
+                  </EVENTS>
+                  <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                  <RUNNABLES>
+                    <RUNNABLE-ENTITY UUID="9d87cbd4-5e0c-37d1-8f70-5ff311f88860">
+                      <SHORT-NAME>UltraSonic</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <DATA-WRITE-ACCESSS>
+                        <VARIABLE-ACCESS UUID="83be1fec-050c-3b89-9876-0bc4b6eb4237">
+                          <SHORT-NAME>dataWriteAccess_UltraSonic_SonarSend_distance</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC/SonarSend</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/CollisionDetectionApplicationLayer/Interface/SonarDataInterface/distance</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                      </DATA-WRITE-ACCESSS>
+                      <SERVER-CALL-POINTS>
+                        <SYNCHRONOUS-SERVER-CALL-POINT UUID="5ba04f84-a2e6-3a0c-a396-411312658d63">
+                          <SHORT-NAME>SonarCallTrig</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC/SonarTrig</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/ArcCore/Services/IoHwAb/DigitalServiceWrite/Write</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <SYNCHRONOUS-SERVER-CALL-POINT UUID="77604b1c-d16a-3c56-977f-7c5e9d00c0c3">
+                          <SHORT-NAME>SonarCallEcho</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC/SonarEcho</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/ArcCore/Services/IoHwAb/DigitalServiceRead/Read</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                      </SERVER-CALL-POINTS>
+                      <SYMBOL>UltraSonic</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                  </RUNNABLES>
+                  <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+                </SWC-INTERNAL-BEHAVIOR>
+              </INTERNAL-BEHAVIORS>
+            </APPLICATION-SW-COMPONENT-TYPE>
+            <SWC-IMPLEMENTATION UUID="4859d1c0-a4b9-3841-aad7-a0ffa15c10e3">
+              <SHORT-NAME>UltraSonicSWCImpl</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE UUID="86d259fa-bd8d-31eb-bd3e-84cad9d6e71e">
+                  <SHORT-NAME>src</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>artifactDescriptor</SHORT-LABEL>
+                      <CATEGORY>artifactDescriptorCategory</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <RESOURCE-CONSUMPTION UUID="3060c924-b796-3a81-b532-4ea5318fa072">
+                <SHORT-NAME>resourceConsumption</SHORT-NAME>
+              </RESOURCE-CONSUMPTION>
+              <VENDOR-ID>0</VENDOR-ID>
+              <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC/UltraSonicSWCBehaviour</BEHAVIOR-REF>
+            </SWC-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

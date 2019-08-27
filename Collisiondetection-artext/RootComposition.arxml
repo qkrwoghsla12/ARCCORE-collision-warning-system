@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-3-0.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>CollisionDetectionApplicationLayer</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>CompositionPackage</SHORT-NAME>
+          <ELEMENTS>
+            <COMPOSITION-SW-COMPONENT-TYPE UUID="cd2b53fa-08d8-3ee8-a165-5f702d246ae3">
+              <SHORT-NAME>RootComposition</SHORT-NAME>
+              <PORTS>
+                <P-PORT-PROTOTYPE UUID="bdefc014-2d2d-336f-a27e-e056049f2e7f">
+                  <SHORT-NAME>CanTxPortOut</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/CollisionDetectionApplicationLayer/Interface/DataInterface</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="6ca50b82-ea3b-326b-815b-e414a9529c79">
+                  <SHORT-NAME>CanRxPortOut</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/CollisionDetectionApplicationLayer/Interface/DataInterface</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+              </PORTS>
+              <COMPONENTS>
+                <SW-COMPONENT-PROTOTYPE UUID="f2ee345d-b303-3e32-b62a-2d0974a2aa7b">
+                  <SHORT-NAME>collisiondetectionSWC</SHORT-NAME>
+                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWC</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="f05ccf8f-29ec-3121-aed6-88d72801dd7b">
+                  <SHORT-NAME>ultrasonicSWC</SHORT-NAME>
+                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="f69562a2-ee91-3b17-a42a-a290a0bb75f3">
+                  <SHORT-NAME>cantranslateSWC</SHORT-NAME>
+                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CanTranslateSWC</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="2fff3671-3f65-3d17-b08b-c14ec56d14b4">
+                  <SHORT-NAME>RearLedSWC</SHORT-NAME>
+                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/LEDActuatorSWC</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="554596be-5249-3cc3-b295-a494996fe940">
+                  <SHORT-NAME>FrontLedSWC</SHORT-NAME>
+                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/LEDActuatorSWC</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="0d405b6b-9be6-3f07-853d-6e87ca264ebb">
+                  <SHORT-NAME>modeManagerInitSWC</SHORT-NAME>
+                  <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/ModeManagerSWC</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="5de85248-0efc-3ad8-be37-fc5d310e1917">
+                  <SHORT-NAME>ioHwAb</SHORT-NAME>
+                  <TYPE-TREF DEST="ECU-ABSTRACTION-SW-COMPONENT-TYPE">/CollisionDetectionBSW/Services/IoHwAb/IoHwAb</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="1bb1b445-79af-371b-b890-50703cab5e1e">
+                  <SHORT-NAME>ecuM</SHORT-NAME>
+                  <TYPE-TREF DEST="SERVICE-SW-COMPONENT-TYPE">/CollisionDetectionBSW/Services/EcuM/EcuM</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="548ca785-aa2c-3c6f-86fd-a460c4e754c7">
+                  <SHORT-NAME>comM</SHORT-NAME>
+                  <TYPE-TREF DEST="SERVICE-SW-COMPONENT-TYPE">/CollisionDetectionBSW/Services/ComM/ComM</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+                <SW-COMPONENT-PROTOTYPE UUID="2a7c6437-504a-3aab-aea5-15b485f75ace">
+                  <SHORT-NAME>bswM</SHORT-NAME>
+                  <TYPE-TREF DEST="SERVICE-SW-COMPONENT-TYPE">/CollisionDetectionBSW/Services/BswM/BswM</TYPE-TREF>
+                </SW-COMPONENT-PROTOTYPE>
+              </COMPONENTS>
+              <CONNECTORS>
+                <ASSEMBLY-SW-CONNECTOR UUID="06dc81e7-15b9-3ae0-877d-93acd3ba6ae4">
+                  <SHORT-NAME>ioHwAb_DigitalFrontLED_to_FrontLedSWC_DigitalLED</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ioHwAb</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionBSW/Services/IoHwAb/IoHwAb/DigitalFrontLED</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/FrontLedSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/LEDActuatorSWC/DigitalLED</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="872c9bdc-105f-3d02-ab7c-d7bcbce85979">
+                  <SHORT-NAME>ioHwAb_DigitalRearLED_to_RearLedSWC_DigitalLED</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ioHwAb</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionBSW/Services/IoHwAb/IoHwAb/DigitalRearLED</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/RearLedSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/LEDActuatorSWC/DigitalLED</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="f16084fe-2948-3354-b1c5-b89d7b863a04">
+                  <SHORT-NAME>ioHwAb_DigitalSonarTrig_to_ultrasonicSWC_SonarTrig</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ioHwAb</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionBSW/Services/IoHwAb/IoHwAb/DigitalSonarTrig</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ultrasonicSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC/SonarTrig</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="c3c1decd-8d53-3c4c-9d8e-b4a70591f19f">
+                  <SHORT-NAME>ioHwAb_DigitalSonarEcho_to_ultrasonicSWC_SonarEcho</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ioHwAb</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionBSW/Services/IoHwAb/IoHwAb/DigitalSonarEcho</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ultrasonicSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC/SonarEcho</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="7e0cb697-c127-3fa1-8ffd-407582640dd2">
+                  <SHORT-NAME>ultrasonicSWC_SonarSend_to_cantranslateSWC_SonarRecv</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ultrasonicSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC/SonarSend</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/cantranslateSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CanTranslateSWC/SonarRecv</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="489acea3-d40b-3428-a182-ad1ac706de45">
+                  <SHORT-NAME>ultrasonicSWC_SonarSend_to_collisiondetectionSWC_SonarRecv</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ultrasonicSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWC/SonarSend</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/collisiondetectionSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWC/SonarRecv</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="788f7f83-50cb-338f-90c1-ecd835a1e0b6">
+                  <SHORT-NAME>collisiondetectionSWC_FrontStatus_to_FrontLedSWC_Status</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/collisiondetectionSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWC/FrontStatus</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/FrontLedSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/LEDActuatorSWC/Status</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="36716034-28b8-3d14-a202-34c34327b51a">
+                  <SHORT-NAME>collisiondetectionSWC_RearStatus_to_RearLedSWC_Status</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/collisiondetectionSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWC/RearStatus</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/RearLedSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/LEDActuatorSWC/Status</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="5041958e-3247-3efb-81e9-263c67c5c3de">
+                  <SHORT-NAME>ecuM_currentMode_to_modeManagerInitSWC_Mode</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ecuM</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionBSW/Services/EcuM/EcuM/currentMode</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/modeManagerInitSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/ModeManagerSWC/Mode</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="cb88816b-8d71-3034-85d7-e17248d1f794">
+                  <SHORT-NAME>modeManagerInitSWC_ComMControl_to_bswM_modeRequestPort_SwcStartCommunication</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/modeManagerInitSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/ModeManagerSWC/ComMControl</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/bswM</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionBSW/Services/BswM/BswM/modeRequestPort_SwcStartCommunication</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <ASSEMBLY-SW-CONNECTOR UUID="9fd280ad-ff87-3763-8818-09881eb15d45">
+                  <SHORT-NAME>ecuM_SR_User_to_modeManagerInitSWC_RunControl</SHORT-NAME>
+                  <PROVIDER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ecuM</CONTEXT-COMPONENT-REF>
+                    <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionBSW/Services/EcuM/EcuM/SR_User</TARGET-P-PORT-REF>
+                  </PROVIDER-IREF>
+                  <REQUESTER-IREF>
+                    <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/modeManagerInitSWC</CONTEXT-COMPONENT-REF>
+                    <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/ModeManagerSWC/RunControl</TARGET-R-PORT-REF>
+                  </REQUESTER-IREF>
+                </ASSEMBLY-SW-CONNECTOR>
+                <DELEGATION-SW-CONNECTOR UUID="3ba2b921-9700-3819-9bbd-35b9df9b765e">
+                  <SHORT-NAME>CanTxPortOut_delegate_connector0</SHORT-NAME>
+                  <INNER-PORT-IREF>
+                    <P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                      <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/cantranslateSWC</CONTEXT-COMPONENT-REF>
+                      <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CanTranslateSWC/CanTxPort</TARGET-P-PORT-REF>
+                    </P-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  </INNER-PORT-IREF>
+                  <OUTER-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/CanTxPortOut</OUTER-PORT-REF>
+                </DELEGATION-SW-CONNECTOR>
+                <DELEGATION-SW-CONNECTOR UUID="81451ee3-94a9-3010-9a97-130c701cd5a1">
+                  <SHORT-NAME>CanRxPortOut_delegate_connector0</SHORT-NAME>
+                  <INNER-PORT-IREF>
+                    <R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                      <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/cantranslateSWC</CONTEXT-COMPONENT-REF>
+                      <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CanTranslateSWC/CanRxPort</TARGET-R-PORT-REF>
+                    </R-PORT-IN-COMPOSITION-INSTANCE-REF>
+                  </INNER-PORT-IREF>
+                  <OUTER-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/CanRxPortOut</OUTER-PORT-REF>
+                </DELEGATION-SW-CONNECTOR>
+              </CONNECTORS>
+            </COMPOSITION-SW-COMPONENT-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

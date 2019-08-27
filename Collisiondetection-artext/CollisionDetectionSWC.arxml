@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-3-0.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>CollisionDetectionApplicationLayer</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>ApplicationPackage</SHORT-NAME>
+          <ELEMENTS>
+            <APPLICATION-SW-COMPONENT-TYPE UUID="30e4724a-bb18-34e9-9340-68d4a8ba03ff">
+              <SHORT-NAME>CollisionDetectionSWC</SHORT-NAME>
+              <PORTS>
+                <P-PORT-PROTOTYPE UUID="19ac9914-b212-3ca9-bc30-c4f81ce97d94">
+                  <SHORT-NAME>RearStatus</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/CollisionDetectionApplicationLayer/Interface/LedRequestInterface</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <P-PORT-PROTOTYPE UUID="1cdf3c51-38cd-30ad-ad18-b8602ec268fc">
+                  <SHORT-NAME>FrontStatus</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/CollisionDetectionApplicationLayer/Interface/LedRequestInterface</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+                <R-PORT-PROTOTYPE UUID="4be16a0b-5e28-3ef9-bb3c-5045e8a0ae5e">
+                  <SHORT-NAME>SonarRecv</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/CollisionDetectionApplicationLayer/Interface/SonarDataInterface</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+              </PORTS>
+              <INTERNAL-BEHAVIORS>
+                <SWC-INTERNAL-BEHAVIOR UUID="5c2a8df1-14ec-382c-ad0e-905ee59580ea">
+                  <SHORT-NAME>CollisionDetectionSWCBehaviour</SHORT-NAME>
+                  <DATA-TYPE-MAPPING-REFS>
+                    <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/CollisionDetectionApplicationLayer/Interface/TypeMappings</DATA-TYPE-MAPPING-REF>
+                  </DATA-TYPE-MAPPING-REFS>
+                  <EVENTS>
+                    <TIMING-EVENT UUID="0c899b6f-48a7-43c0-8284-265cfa88777d">
+                      <SHORT-NAME>CollisionDetection_timingEvent_0_1</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWC/CollisionDetectionSWCBehaviour/CollisionDetection</START-ON-EVENT-REF>
+                      <PERIOD>0.1</PERIOD>
+                    </TIMING-EVENT>
+                  </EVENTS>
+                  <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                  <RUNNABLES>
+                    <RUNNABLE-ENTITY UUID="22d95381-3622-34ff-bf23-20ca8d3043bd">
+                      <SHORT-NAME>CollisionDetection</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <DATA-READ-ACCESSS>
+                        <VARIABLE-ACCESS UUID="32201dcb-a2e6-345f-a852-0e790bd978ec">
+                          <SHORT-NAME>dataReadAccess_CollisionDetection_SonarRecv_distance</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWC/SonarRecv</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/CollisionDetectionApplicationLayer/Interface/SonarDataInterface/distance</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                      </DATA-READ-ACCESSS>
+                      <DATA-WRITE-ACCESSS>
+                        <VARIABLE-ACCESS UUID="8102250a-a940-3d6f-8e3b-78544d6d6266">
+                          <SHORT-NAME>dataWriteAccess_CollisionDetection_RearStatus_Status</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWC/RearStatus</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/CollisionDetectionApplicationLayer/Interface/LedRequestInterface/Status</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                        <VARIABLE-ACCESS UUID="0a8d1161-a36e-3c45-acde-4b3792db77d1">
+                          <SHORT-NAME>dataWriteAccess_CollisionDetection_FrontStatus_Status</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWC/FrontStatus</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/CollisionDetectionApplicationLayer/Interface/LedRequestInterface/Status</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                      </DATA-WRITE-ACCESSS>
+                      <SYMBOL>collisionDetection</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                  </RUNNABLES>
+                  <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+                </SWC-INTERNAL-BEHAVIOR>
+              </INTERNAL-BEHAVIORS>
+            </APPLICATION-SW-COMPONENT-TYPE>
+            <SWC-IMPLEMENTATION UUID="cc3a1ba8-eae4-3945-a59a-3d04f581965a">
+              <SHORT-NAME>CollisionDetectionSWCImpl</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE UUID="5f5242a8-913a-3f01-9c7d-af5711c38670">
+                  <SHORT-NAME>src</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>artifactDescriptor</SHORT-LABEL>
+                      <CATEGORY>artifactDescriptorCategory</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <RESOURCE-CONSUMPTION UUID="05284b17-63f3-3f34-8363-a312178ae658">
+                <SHORT-NAME>resourceConsumption</SHORT-NAME>
+              </RESOURCE-CONSUMPTION>
+              <VENDOR-ID>0</VENDOR-ID>
+              <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWC/CollisionDetectionSWCBehaviour</BEHAVIOR-REF>
+            </SWC-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

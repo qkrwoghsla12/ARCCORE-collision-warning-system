@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-3-0.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>CollisionDetectionApplicationLayer</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Signals</SHORT-NAME>
+          <ELEMENTS>
+            <SYSTEM-SIGNAL UUID="21df975b-674f-43de-baa4-6f6213b57933">
+              <SHORT-NAME>RxMessageSystemSignal</SHORT-NAME>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL UUID="dfd36b35-c918-48f3-9d57-4f4eaa103a66">
+              <SHORT-NAME>TxMessageSystemSignal</SHORT-NAME>
+            </SYSTEM-SIGNAL>
+            <I-SIGNAL UUID="071bcc1f-f47c-4102-b97d-fc9105eb3f0b">
+              <SHORT-NAME>RxMessageiSignal</SHORT-NAME>
+              <DATA-TYPE-POLICY>NETWORK-REPRESENTATION-FROM-COM-SPEC</DATA-TYPE-POLICY>
+              <LENGTH>0</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS />
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CollisionDetectionApplicationLayer/Signals/RxMessageSystemSignal</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL UUID="e1bf6aeb-b300-47be-beed-99dbd3e48e0a">
+              <SHORT-NAME>TxMessageiSignal</SHORT-NAME>
+              <DATA-TYPE-POLICY>NETWORK-REPRESENTATION-FROM-COM-SPEC</DATA-TYPE-POLICY>
+              <LENGTH>0</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS />
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CollisionDetectionApplicationLayer/Signals/TxMessageSystemSignal</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL-I-PDU UUID="7299253f-fe96-4adb-ad25-143b52bfb8cc">
+              <SHORT-NAME>RxMessageiSignalPdu</SHORT-NAME>
+              <I-SIGNAL-TO-PDU-MAPPINGS>
+                <I-SIGNAL-TO-I-PDU-MAPPING UUID="0c55edb4-856a-4d27-9904-09149728c734">
+                  <SHORT-NAME>RxMessageMapping</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CollisionDetectionApplicationLayer/Signals/RxMessageiSignal</I-SIGNAL-REF>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+              </I-SIGNAL-TO-PDU-MAPPINGS>
+              <UNUSED-BIT-PATTERN>0</UNUSED-BIT-PATTERN>
+            </I-SIGNAL-I-PDU>
+            <I-SIGNAL-I-PDU UUID="ea7ab64e-e387-451d-8596-3faf18738259">
+              <SHORT-NAME>TxMessageiSignalPdu</SHORT-NAME>
+              <I-SIGNAL-TO-PDU-MAPPINGS>
+                <I-SIGNAL-TO-I-PDU-MAPPING UUID="2a1a8d9c-db6a-47cb-9203-76ffcef73373">
+                  <SHORT-NAME>TxMessageMapping</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CollisionDetectionApplicationLayer/Signals/TxMessageiSignal</I-SIGNAL-REF>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+              </I-SIGNAL-TO-PDU-MAPPINGS>
+              <UNUSED-BIT-PATTERN>0</UNUSED-BIT-PATTERN>
+            </I-SIGNAL-I-PDU>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

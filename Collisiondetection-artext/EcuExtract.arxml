@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-3-0.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>CollisionDetectionApplicationLayer</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>EcuExtract</SHORT-NAME>
+          <ELEMENTS>
+            <SYSTEM UUID="136fbd9c-4173-4d5c-8e91-e41bfab1d440">
+              <SHORT-NAME>CollisionDetectionEcuExtract</SHORT-NAME>
+              <CATEGORY>ECU_EXTRACT</CATEGORY>
+              <MAPPINGS>
+                <SYSTEM-MAPPING UUID="bf54020c-2dfc-4680-9c69-948c4f28d281">
+                  <SHORT-NAME>ImplementationMappings</SHORT-NAME>
+                  <SW-IMPL-MAPPINGS>
+                    <SWC-TO-IMPL-MAPPING UUID="9c349a75-1ddc-4af5-bb7d-a9c8faa584fa">
+                      <SHORT-NAME>EcuMMap</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionBSW/Services/EcuM/EcuMFixedImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ecuM</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                    <SWC-TO-IMPL-MAPPING UUID="b95c5bc8-a5be-443c-b69d-59b31a274d37">
+                      <SHORT-NAME>SwcToImplMapping_for_BswMComponentImpl_to_bswM</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionBSW/Services/BswM/BswMComponentImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/bswM</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                    <SWC-TO-IMPL-MAPPING UUID="a380b047-5d9d-4ab6-82cd-e1aa7ed96502">
+                      <SHORT-NAME>SwcToImplMapping_for_ComMImpl_to_comM</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionBSW/Services/ComM/ComMImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/comM</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                    <SWC-TO-IMPL-MAPPING UUID="4aac691a-d369-4231-9300-089ded22976e">
+                      <SHORT-NAME>IoHwAbMap</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionBSW/Services/IoHwAb/IoHwAbImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ioHwAb</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                    <SWC-TO-IMPL-MAPPING UUID="ce04963e-79ca-466d-af95-177d0c31e511">
+                      <SHORT-NAME>SwcToImplMapping_for_UltraSonicSWCImpl_to_ultrasonicSWC</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionApplicationLayer/ApplicationPackage/UltraSonicSWCImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/ultrasonicSWC</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                    <SWC-TO-IMPL-MAPPING UUID="f6962884-e1a2-404f-96a6-f68c840737be">
+                      <SHORT-NAME>SwcToImplMapping_for_CanTranslateSWCImpl_to_cantranslateSWC</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionApplicationLayer/ApplicationPackage/CanTranslateSWCImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/cantranslateSWC</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                    <SWC-TO-IMPL-MAPPING UUID="528312dc-2a55-417b-8752-a200bf767da0">
+                      <SHORT-NAME>SwcToImplMapping_for_CollisionDetectionSWCImpl_to_collisiondetectionSWC</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionApplicationLayer/ApplicationPackage/CollisionDetectionSWCImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/collisiondetectionSWC</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                    <SWC-TO-IMPL-MAPPING UUID="c95faa3f-2ede-4088-8d51-db78498354e9">
+                      <SHORT-NAME>SwcToImplMapping_for_LEDActuatorSWCImpl_to_RearLedSWC</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionApplicationLayer/ApplicationPackage/LEDActuatorSWCImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/RearLedSWC</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                    <SWC-TO-IMPL-MAPPING UUID="ca3c61a5-2c43-48bb-938a-b8d3410c3f32">
+                      <SHORT-NAME>SwcToImplMapping_for_LEDActuatorSWCImpl_to_FrontLedSWC</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionApplicationLayer/ApplicationPackage/LEDActuatorSWCImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/FrontLedSWC</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                    <SWC-TO-IMPL-MAPPING UUID="2ddc913f-b0f9-493e-80ad-406985dc34da">
+                      <SHORT-NAME>SwcToImplMapping_for_ModeManagerSWCImpl_to_modeManagerInitSWC</SHORT-NAME>
+                      <COMPONENT-IMPLEMENTATION-REF DEST="SWC-IMPLEMENTATION">/CollisionDetectionApplicationLayer/ApplicationPackage/ModeManagerSWCImpl</COMPONENT-IMPLEMENTATION-REF>
+                      <COMPONENT-IREFS>
+                        <COMPONENT-IREF>
+                          <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                          <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/modeManagerInitSWC</TARGET-COMPONENT-REF>
+                        </COMPONENT-IREF>
+                      </COMPONENT-IREFS>
+                    </SWC-TO-IMPL-MAPPING>
+                  </SW-IMPL-MAPPINGS>
+                </SYSTEM-MAPPING>
+                <SYSTEM-MAPPING UUID="9eee7886-7036-4c49-b1ed-37c700c843ab">
+                  <SHORT-NAME>SignalMappings</SHORT-NAME>
+                  <DATA-MAPPINGS>
+                    <SENDER-RECEIVER-TO-SIGNAL-MAPPING>
+                      <DATA-ELEMENT-IREF>
+                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                        <CONTEXT-PORT-REF DEST="P-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/CanTxPortOut</CONTEXT-PORT-REF>
+                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/CollisionDetectionApplicationLayer/Interface/DataInterface/message</TARGET-DATA-PROTOTYPE-REF>
+                      </DATA-ELEMENT-IREF>
+                      <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CollisionDetectionApplicationLayer/Signals/TxMessageSystemSignal</SYSTEM-SIGNAL-REF>
+                    </SENDER-RECEIVER-TO-SIGNAL-MAPPING>
+                    <SENDER-RECEIVER-TO-SIGNAL-MAPPING>
+                      <DATA-ELEMENT-IREF>
+                        <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE">/CollisionDetectionApplicationLayer/EcuExtract/CollisionDetectionEcuExtract/RootSwComposition</CONTEXT-COMPOSITION-REF>
+                        <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition/CanRxPortOut</CONTEXT-PORT-REF>
+                        <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/CollisionDetectionApplicationLayer/Interface/DataInterface/message</TARGET-DATA-PROTOTYPE-REF>
+                      </DATA-ELEMENT-IREF>
+                      <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CollisionDetectionApplicationLayer/Signals/RxMessageSystemSignal</SYSTEM-SIGNAL-REF>
+                    </SENDER-RECEIVER-TO-SIGNAL-MAPPING>
+                  </DATA-MAPPINGS>
+                </SYSTEM-MAPPING>
+              </MAPPINGS>
+              <ROOT-SOFTWARE-COMPOSITIONS>
+                <ROOT-SW-COMPOSITION-PROTOTYPE UUID="2832b842-92ed-4722-ba8f-c4a8e910a950">
+                  <SHORT-NAME>RootSwComposition</SHORT-NAME>
+                  <SOFTWARE-COMPOSITION-TREF DEST="COMPOSITION-SW-COMPONENT-TYPE">/CollisionDetectionApplicationLayer/CompositionPackage/RootComposition</SOFTWARE-COMPOSITION-TREF>
+                </ROOT-SW-COMPOSITION-PROTOTYPE>
+              </ROOT-SOFTWARE-COMPOSITIONS>
+              <SYSTEM-VERSION>1</SYSTEM-VERSION>
+            </SYSTEM>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
