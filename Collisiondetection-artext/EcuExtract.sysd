@@ -1,0 +1,38 @@
+package CollisionDetectionApplicationLayer.EcuExtract
+
+import CollisionDetectionApplicationLayer.CompositionPackage.RootComposition
+import CollisionDetectionApplicationLayer.CompositionPackage.RootComposition.*
+
+
+import CollisionDetectionBSW.Services.ComM.ComMImpl
+import CollisionDetectionBSW.Services.EcuM.EcuMFixedImpl
+import CollisionDetectionBSW.Services.BswM.BswMComponentImpl
+
+import CollisionDetectionApplicationLayer.Signals.RxMessageSystemSignal
+import CollisionDetectionApplicationLayer.Signals.TxMessageSystemSignal
+
+import CollisionDetectionBSW.Services.IoHwAb.IoHwAbImpl
+import CollisionDetectionApplicationLayer.ApplicationPackage.*
+import CollisionDetectionApplicationLayer.Signals.*
+
+system CollisionDetectionEcuExtract {
+	rootComposition RootComposition
+	
+	mapping as ImplementationMappings {
+		implMap EcuMFixedImpl to ecuM as EcuMMap 
+		implMap BswMComponentImpl to bswM
+		implMap ComMImpl to comM
+		implMap IoHwAbImpl to ioHwAb as IoHwAbMap
+		
+		implMap UltraSonicSWCImpl to ultrasonicSWC
+		implMap CanTranslateSWCImpl to cantranslateSWC
+		implMap CollisionDetectionSWCImpl to collisiondetectionSWC
+		implMap LEDActuatorSWCImpl to RearLedSWC
+		implMap LEDActuatorSWCImpl to FrontLedSWC
+		implMap ModeManagerSWCImpl to modeManagerInitSWC
+	}
+	mapping as SignalMappings {
+		signalMap outerPort CanTxPortOut.message to TxMessageSystemSignal
+		signalMap outerPort CanRxPortOut.message to RxMessageSystemSignal
+	}
+}

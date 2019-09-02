@@ -1,0 +1,27 @@
+package CollisionDetectionApplicationLayer.Interface
+
+import ArcCore.Platform.BaseTypes.*
+
+int impl IntImpl extends uint32
+int app Int extends uint32
+
+boolean impl LedStatusImpl extends ^boolean
+boolean app LedStatus extends ^boolean
+
+interface senderReceiver DataInterface {
+	data Int message
+}
+
+interface senderReceiver SonarDataInterface{
+	data Int distance
+}
+
+interface senderReceiver LedRequestInterface{
+	data LedStatus Status
+}
+/* DataTypeMappings for the impl:s and app:s defined above*/
+dataTypeMappingSet TypeMappings {
+	map IntImpl Int
+	map LedStatusImpl LedStatus
+}
+

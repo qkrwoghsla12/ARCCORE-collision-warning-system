@@ -1,0 +1,38 @@
+package CollisionDetectionApplicationLayer.ApplicationPackage
+
+import ArcCore.Services.IoHwAb.*
+import CollisionDetectionSWC.CollisionDetectionSWCBehaviour
+import CollisionDetectionApplicationLayer.Interface.*
+
+import CollisionDetectionBSW.Services.BswM.ComMModeRequestInterface
+import AUTOSAR.Services.ComM.*
+import AUTOSAR.Services.EcuM.EcuM_CurrentMode
+import AUTOSAR.Services.EcuM.EcuMFixedTypeMappings
+import AUTOSAR.Services.EcuM.*
+
+component application CollisionDetectionSWC {
+	ports {
+		sender RearStatus provides LedRequestInterface
+		sender FrontStatus provides LedRequestInterface
+		receiver SonarRecv requires SonarDataInterface
+	}
+}
+
+internalBehavior CollisionDetectionSWCBehaviour for CollisionDetectionSWC {
+	dataTypeMappings {
+		TypeMappings
+	}
+
+
+	runnable CollisionDetection [0.0] {
+		symbol "collisionDetection"
+		dataWriteAccess RearStatus.Status
+		dataWriteAccess FrontStatus.Status
+		dataReadAccess SonarRecv.distance
+		timingEvent 0.1
+	}
+}
+implementation CollisionDetectionSWCImpl for CollisionDetectionSWCBehaviour {
+	language c
+	codeDescriptor "src"
+}

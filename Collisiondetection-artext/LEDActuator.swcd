@@ -1,0 +1,31 @@
+package CollisionDetectionApplicationLayer.ApplicationPackage
+
+import ArcCore.Services.IoHwAb.*
+import CollisionDetectionApplicationLayer.Interface.*
+import LEDActuatorSWC.LEDActuatorSWCBehaviour
+
+	
+component application LEDActuatorSWC {
+	ports {
+		client DigitalLED requires DigitalServiceWrite
+		receiver Status requires LedRequestInterface
+	}
+}
+
+internalBehavior supportsMultipleInstantiation LEDActuatorSWCBehaviour for LEDActuatorSWC {
+	dataTypeMappings {
+		TypeMappings
+	}
+
+	runnable LEDActuator [0.0] {
+		symbol "ledActuator"
+		timingEvent 0.1
+		dataReadAccess Status.Status
+		serverCallPoint synchronous DigitalLED.Write as LEDCallPoint
+	}
+}
+implementation LEDActuatorSWCImpl for LEDActuatorSWCBehaviour {
+	language c
+	codeDescriptor "src"
+}
+	

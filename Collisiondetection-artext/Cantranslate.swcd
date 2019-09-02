@@ -1,0 +1,33 @@
+package CollisionDetectionApplicationLayer.ApplicationPackage
+
+import CollisionDetectionApplicationLayer.Interface.*
+import CanTranslateSWC.CanTranslateSWCBehaviour
+
+
+component application CanTranslateSWC {
+	ports {
+		receiver CanRxPort requires DataInterface
+		sender CanTxPort provides DataInterface
+
+		receiver SonarRecv requires SonarDataInterface
+	}
+}
+
+internalBehavior CanTranslateSWCBehaviour for CanTranslateSWC {
+	dataTypeMappings {
+		TypeMappings
+	}
+	runnable CanTranslate [0.0] {
+		symbol "canTranslate"
+		dataReadAccess SonarRecv.distance
+		dataReadAccess CanRxPort.message		// CAN 수신
+		dataWriteAccess CanTxPort.message	// CAN 송신
+
+		timingEvent 0.1
+	}
+}
+
+implementation CanTranslateSWCImpl for CanTranslateSWCBehaviour {
+	language c
+	codeDescriptor "src"
+}

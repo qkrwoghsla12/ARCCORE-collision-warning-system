@@ -1,0 +1,40 @@
+package CollisionDetectionApplicationLayer.ApplicationPackage
+
+import ArcCore.Services.IoHwAb.*
+import CollisionDetectionApplicationLayer.Interface.*
+import ModeManagerSWC.ModeManagerSWCBehaviour
+
+import CollisionDetectionBSW.Services.BswM.ComMModeRequestInterface
+import AUTOSAR.Services.ComM.*
+import AUTOSAR.Services.EcuM.EcuM_CurrentMode
+import AUTOSAR.Services.EcuM.EcuMFixedTypeMappings
+import AUTOSAR.Services.EcuM.*
+
+component application ModeManagerSWC {
+	ports {
+		sender ComMControl provides ComMModeRequestInterface		
+		client RunControl requires EcuM_StateRequest
+		receiver Mode requires EcuM_CurrentMode
+	}
+}
+
+internalBehavior ModeManagerSWCBehaviour for ModeManagerSWC {
+	dataTypeMappings {
+		EcuMFixedTypeMappings
+		ComMTypeMappings
+		TypeMappings
+	}
+
+	runnable Init [0.0] {
+		symbol "EcuModeManagerInit"
+		serverCallPoint synchronous RunControl.RequestRUN
+		dataWriteAccess ComMControl.requestedMode
+		
+		modeSwitchEvent exit Mode.currentMode.STARTUP as InitEvent
+	}
+}
+
+implementation ModeManagerSWCImpl for ModeManagerSWCBehaviour {
+	language c
+	codeDescriptor "src"
+}

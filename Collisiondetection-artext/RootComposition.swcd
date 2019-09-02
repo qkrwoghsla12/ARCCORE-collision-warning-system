@@ -1,0 +1,44 @@
+package CollisionDetectionApplicationLayer.CompositionPackage
+
+import CollisionDetectionApplicationLayer.ApplicationPackage.*
+
+import CollisionDetectionBSW.Services.IoHwAb.*
+import CollisionDetectionBSW.Services.EcuM.*
+import CollisionDetectionBSW.Services.ComM.*
+import CollisionDetectionBSW.Services.BswM.*
+
+composition RootComposition {
+	prototype CollisionDetectionSWC collisiondetectionSWC
+	prototype UltraSonicSWC ultrasonicSWC
+	prototype CanTranslateSWC cantranslateSWC
+	prototype LEDActuatorSWC RearLedSWC
+	prototype LEDActuatorSWC FrontLedSWC
+	prototype ModeManagerSWC modeManagerInitSWC
+	
+	prototype IoHwAb ioHwAb
+	prototype EcuM ecuM
+	prototype ComM comM
+	prototype BswM bswM
+	ports {
+		provides cantranslateSWC.CanTxPort CanTxPortOut
+		requires cantranslateSWC.CanRxPort CanRxPortOut
+	}
+	// 외부로 나가는 신호
+	connect ioHwAb.DigitalFrontLED to FrontLedSWC.DigitalLED
+	connect ioHwAb.DigitalRearLED to RearLedSWC.DigitalLED
+	connect ioHwAb.DigitalSonarTrig to ultrasonicSWC.SonarTrig
+	connect ioHwAb.DigitalSonarEcho to ultrasonicSWC.SonarEcho
+		
+	connect ultrasonicSWC.SonarSend to cantranslateSWC.SonarRecv
+	connect ultrasonicSWC.SonarSend to collisiondetectionSWC.SonarRecv
+	
+	connect collisiondetectionSWC.FrontStatus to FrontLedSWC.Status
+	connect collisiondetectionSWC.RearStatus to RearLedSWC.Status
+	
+	// 내부 신호 연결
+	
+	
+	connect ecuM.currentMode to modeManagerInitSWC.Mode
+	connect modeManagerInitSWC.ComMControl to bswM.modeRequestPort_SwcStartCommunication
+	connect ecuM.SR_User to modeManagerInitSWC.RunControl
+}

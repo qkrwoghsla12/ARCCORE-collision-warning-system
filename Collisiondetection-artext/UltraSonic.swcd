@@ -1,0 +1,32 @@
+package CollisionDetectionApplicationLayer.ApplicationPackage
+
+import ArcCore.Services.IoHwAb.*
+import UltraSonicSWC.UltraSonicSWCBehaviour
+import CollisionDetectionApplicationLayer.Interface.*
+
+
+component application UltraSonicSWC {
+	ports {
+		client SonarTrig requires DigitalServiceWrite
+		client SonarEcho requires DigitalServiceRead
+		
+		sender SonarSend provides SonarDataInterface
+	}
+}
+
+internalBehavior UltraSonicSWCBehaviour for UltraSonicSWC {
+	dataTypeMappings {
+		TypeMappings
+	}
+	runnable UltraSonic [0.0] {
+		symbol "UltraSonic"
+		timingEvent 0.1
+		dataWriteAccess SonarSend.distance
+		serverCallPoint synchronous SonarTrig.Write as SonarCallTrig
+		serverCallPoint synchronous SonarEcho.Read as SonarCallEcho
+	}
+}
+implementation UltraSonicSWCImpl for UltraSonicSWCBehaviour {
+	language c
+	codeDescriptor "src"
+}
