@@ -1,7 +1,7 @@
 # ARCCORE-collision-warning-system
 
 ## BSW Module Configuration
-| module | Configuration |
+| module | method |
 |--|--|
 | Dio | Provides a service to read/write for the Digital I/O channels, ports, and channel groups. In order to control the LED and ultrasonic sensors using the GPIO provided by the MCU, the DioChannel was configured. |
 | Port | Provides a service to initialize the PORT structure of the MCU. In order to initialize the ports of the MCU with the LEDs and ultrasonic sensors, and to connect the CAN transceiver, the direction and mode of use of the ports were configured. |
