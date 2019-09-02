@@ -1,4 +1,9 @@
 # ARCCORE-collision-warning-system
+
+ARCCORE-collision-warning-system provides the complete details on developing a collision warning system using the open source distribution of AUTOSAR, ARCCORE. All the required software modules are within this project.
+
+Moreover, this provides evaluation methods to ensure the stability of the entire system benchmarking the perioidicty (real-time performance) of the RTE tasks and the overall latency of the CAN communication stack (from the SWC to the CAN bus)
+
 ## SWC Implementation
 - **UltraSonicSWC** : After converting the measured data using the ultrasonic sensor into distance data in cm, this performs the operation of transmitting to the CanTranslateSWC and CollisionDetectionSWC. There are SonarTrig and SonarEcho client ports to request Digital I/O function through the ioHwAb, and the SonarSend Sender Port exists to transmit converted data to other SWCs.
   
@@ -9,7 +14,6 @@
 - **LEDActuatorSWC** : This controls the LED according to the LED control signal received from the CollisionDetectionSWC. There is a Status Receiver Port to receive the LED control status and there is a DigitalLED Client Port to request the Digital I/O function through ioHwAb. 
   
 - **ModeManagerSWC** : This transmits the ECU control signals to the ecuM and bswM, and lets the BSW perform Ecu, Gpt (general purpose timer), and communication initialization functions. There is a ComMControl Sender Port, which sends messages to the bswM for turning on/off the PDUs used for CAN communication; a Mode Receiver Port, for obtaining the status information that the ECU is currently operating from the ecuM; and a RunControl Client Port, for requesting a change in operation of the ECU. 
-  
   
 ## BSW Module Configuration
 | module | method |
@@ -28,3 +32,14 @@
 |PduR|Routes the PDU sent from the Com module to the Communication Interface Module on the BSW ECU abstraction layer. The PDU received from the Com module is configured to route to the CanIf Module.|
 |Com|Converses the AUTOSAR signal received from the RTE to I-PDU used in the BSW layer and performs communication transmission control. The number of bits and byte order of the signal received from the RTE were configured and the I-PDU transmission control period was configured.|
 |CanSM|Manages the status and control flow of the CAN communication network. We configured the bus off the recovery time for the recovery of the CAN network.|
+
+## Reference paper
+A paper describing the simplifed basic concepts of AUTOSAR and the improved AUTOSAR development methodology can be downloaded [here].
+Link to be added. Paper still under review.
+
+ If you're going to use this for your work, please quote it within any resulting publication:
+~~~
+Jaeho Park and Byoung Wook Choi "Design and Implementation Procedure for an Advanced Driver Assistance System Based on an Open Source AUTOSAR", Electronics, 2019.
+~~~
+
+
