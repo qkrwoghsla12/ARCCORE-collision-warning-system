@@ -1,7 +1,7 @@
 #include "Rte_CollisionDetectionSWC.h"
 #define COLLISION_DISTANCE 30
-#define RED 10
-#define YELLOW 20
+#define RED 1000
+#define YELLOW 2000
 #define LOW 0
 #define HIGH 1
 
