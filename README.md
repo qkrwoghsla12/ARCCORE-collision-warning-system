@@ -1,8 +1,16 @@
 # ARCCORE-collision-warning-system
 ## SWC Implementation
-|--|--|
-
-
+- **UltraSonicSWC** : After converting the measured data using the ultrasonic sensor into distance data in cm, this performs the operation of transmitting to the CanTranslateSWC and CollisionDetectionSWC. There are SonarTrig and SonarEcho client ports to request Digital I/O function through the ioHwAb, and the SonarSend Sender Port exists to transmit converted data to other SWCs.
+  
+- **CanTranslateSWC** : To transmit the data received from the UltraSonicSWC to the CAN bus using the CAN communication stack, one must connect the CanTxPort Sender Port of the CanTranslateSWC to the CanTxPortOut Sender Port of the collision detection root software composition. There is a SonarRecv Receiver Port for receiving the ultrasonic sensor data, and there exists a CanTxPort Sender Port for transmitting data to the COM module of the BSW through the CanTxPortOut port of the collision detection root software composition.
+  
+- **CollisionDetectionSWC** : Using the data received from the UltraSonicSWC, this determines the LED to be controlled according to the risk of collision with the obstacle and sends it to the LEDActuatorSWC. If the value of data is more than 20 cm, it does not generate a warning. If it is 10~20 cm, the yellow LED lights up. If it is less than 10 cm, the red LED lights up. The SonarRecv Receiver Port exists to receive the ultrasonic sensor data, and the YLEDStatus and RLEDStatus Sender Ports exist for the control of the yellow and red LEDs, respectively. 
+  
+- **LEDActuatorSWC** : This controls the LED according to the LED control signal received from the CollisionDetectionSWC. There is a Status Receiver Port to receive the LED control status and there is a DigitalLED Client Port to request the Digital I/O function through ioHwAb. 
+  
+- **ModeManagerSWC** : This transmits the ECU control signals to the ecuM and bswM, and lets the BSW perform Ecu, Gpt (general purpose timer), and communication initialization functions. There is a ComMControl Sender Port, which sends messages to the bswM for turning on/off the PDUs used for CAN communication; a Mode Receiver Port, for obtaining the status information that the ECU is currently operating from the ecuM; and a RunControl Client Port, for requesting a change in operation of the ECU. 
+  
+  
 ## BSW Module Configuration
 | module | method |
 |--|--|
